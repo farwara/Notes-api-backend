@@ -61,4 +61,7 @@ public class Note {
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
     private List<Tag> tags = new ArrayList<>();
+
+@OneToMany(mappedBy = "note", cascade = CascadeType.ALL, orphanRemoval = true)
+private List<Reminder> reminders = new ArrayList<>();
 }
