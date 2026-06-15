@@ -1,5 +1,6 @@
 package com.farwa.notesapi.model;
-
+import java.util.ArrayList;
+import java.util.List;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -52,4 +53,12 @@ public class Note {
     public void preUpdate() {
         updatedAt = LocalDateTime.now();
     }
+
+    @ManyToMany
+    @JoinTable(
+            name = "note_tags",
+            joinColumns = @JoinColumn(name = "note_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+    private List<Tag> tags = new ArrayList<>();
 }
