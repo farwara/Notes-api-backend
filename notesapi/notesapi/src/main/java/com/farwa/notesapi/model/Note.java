@@ -64,4 +64,6 @@ public class Note {
 
 @OneToMany(mappedBy = "note", cascade = CascadeType.ALL, orphanRemoval = true)
 private List<Reminder> reminders = new ArrayList<>();
+    @OneToOne(mappedBy = "note", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Attachment attachment;
 }
