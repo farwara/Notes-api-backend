@@ -14,6 +14,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class Note {
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
