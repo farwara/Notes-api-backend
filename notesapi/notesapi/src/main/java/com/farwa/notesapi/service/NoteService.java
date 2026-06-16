@@ -102,7 +102,12 @@ public class NoteService {
 
         noteRepository.deleteById(id);
     }
-
+    public List<NoteResponseDto> searchNotes(String title, String category, String tag) {
+        return noteRepository.searchNotes(title, category, tag)
+                .stream()
+                .map(this::mapToResponseDto)
+                .toList();
+    }
     private NoteResponseDto mapToResponseDto(Note note) {
         return NoteResponseDto.builder()
                 .id(note.getId())

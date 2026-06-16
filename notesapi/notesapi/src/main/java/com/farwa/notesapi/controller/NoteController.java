@@ -51,4 +51,12 @@ public class NoteController {
     public void deleteNote(@PathVariable Long id) {
         noteService.deleteNote(id);
     }
+    @GetMapping("/search")
+    public List<NoteResponseDto> searchNotes(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) String category,
+            @RequestParam(required = false) String tag
+    ) {
+        return noteService.searchNotes(title, category, tag);
+    }
 }
