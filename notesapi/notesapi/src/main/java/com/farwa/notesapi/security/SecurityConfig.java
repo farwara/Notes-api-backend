@@ -24,7 +24,9 @@ public class SecurityConfig {
                         .requestMatchers("/api/reminders/**").hasAnyRole("USER", "PREMIUM", "ADMIN")
                         .anyRequest().authenticated()
                 )
-                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()));
+                .oauth2ResourceServer(oauth2 -> oauth2
+                        .jwt(jwt -> jwt.jwtAuthenticationConverter(new KeycloakRoleConverter()))
+                );
 
         return http.build();
     }
