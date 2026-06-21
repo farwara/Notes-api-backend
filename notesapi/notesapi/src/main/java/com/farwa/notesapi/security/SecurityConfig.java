@@ -16,12 +16,12 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/categories/**").hasRole("ADMIN")
-                        .requestMatchers("/api/attachments/**").hasAnyRole("PREMIUM", "ADMIN")
-                        .requestMatchers("/api/notes/search").hasAnyRole("PREMIUM", "ADMIN")
-                        .requestMatchers("/api/notes/**").hasAnyRole("USER", "PREMIUM", "ADMIN")
-                        .requestMatchers("/api/tags/**").hasAnyRole("USER", "PREMIUM", "ADMIN")
-                        .requestMatchers("/api/reminders/**").hasAnyRole("USER", "PREMIUM", "ADMIN")
+                        .requestMatchers("/api/categories/**").hasRole("admin")
+                        .requestMatchers("/api/attachments/**").hasAnyRole("premium", "admin")
+                        .requestMatchers("/api/notes/search").hasAnyRole("premium", "admin")
+                        .requestMatchers("/api/notes/**").hasAnyRole("user", "premium", "admin")
+                        .requestMatchers("/api/tags/**").hasAnyRole("user", "premium", "admin")
+                        .requestMatchers("/api/reminders/**").hasAnyRole("user", "premium", "admin")
                         .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2
