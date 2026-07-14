@@ -44,4 +44,9 @@ public class AttachmentController {
     public AttachmentResponseDto getAttachmentInfo(@PathVariable Long noteId) {
         return attachmentService.getAttachmentInfo(noteId);
     }
+    @DeleteMapping("/{noteId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteAttachment(@PathVariable Long noteId) {
+        attachmentService.deleteAttachment(noteId);
+    }
 }
